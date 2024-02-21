@@ -8,7 +8,7 @@ module.exports = {
   copyright: pj.author,
   license: pj.license,
   match: ['https://boccaro.notion.site/*'],
-  require: [],
+  require: ['https://cdn.plyr.io/3.7.8/plyr.js'],
   resource: ['plyrcss https://cdn.plyr.io/3.7.8/plyr.css'],
   'run-at': 'document-end',
   supportURL: pj.bugs.url,

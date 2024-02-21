@@ -17,7 +17,9 @@ module.exports = () => {
     }),
   )
   baseOptions.mode = 'production'
-  // baseOptions.externals = {}
+  baseOptions.externals = {
+    plyr: 'Plyr',
+  }
 
   return baseOptions
 }
