@@ -9,10 +9,10 @@ module.exports = {
   license: pj.license,
   match: ['https://boccaro.notion.site/*'],
   require: [],
-  resource: ['plyrcss plyr/dist/plyr.css'],
+  resource: ['plyrcss https://cdn.plyr.io/3.7.8/plyr.css'],
   'run-at': 'document-end',
   supportURL: pj.bugs.url,
   homepage: pj.homepage,
   grant: ['GM_getResourceText', 'GM_addStyle'],
-  icon: 'https://img.icons8.com/ios/50/000000/happy-eyes.png',
+  icon: 'https://img.icons8.com/external-vitaliy-gorbachev-blue-vitaly-gorbachev/60/external-player-stay-home-vitaliy-gorbachev-blue-vitaly-gorbachev.png',
 }

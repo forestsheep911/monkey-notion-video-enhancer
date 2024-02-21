@@ -2,18 +2,20 @@ import Plyr from 'plyr'
 
 const app = () => {
   console.log('monkey jumping on the bed.')
-  // const css = GM_getResourceText('plyrcss')
-  // GM_addStyle(css)
+  const css = GM_getResourceText('plyrcss')
+  GM_addStyle(css)
   setTimeout(() => {
     const videoBlock = document.querySelectorAll('video')
-    console.log(videoBlock)
-
     videoBlock.forEach((video) => {
-      const videoClone = video.cloneNode(true) as HTMLElement
-      document.body.appendChild(videoClone)
-      console.log(videoClone)
-
-      new Plyr(videoClone)
+      const parent4 = video.parentElement?.parentElement?.parentElement?.parentElement
+      if (parent4) {
+        parent4.style.display = 'none'
+        const videoClone = video.cloneNode(true) as HTMLElement
+        parent4.parentElement?.appendChild(videoClone)
+        new Plyr(videoClone, {
+          loadSprite: false,
+        })
+      }
     })
   }, 5000)
 }
