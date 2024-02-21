@@ -1,7 +1,7 @@
 {
-  "name": "monkey-xxx-xxx",
+  "name": "notion-video-enhancer",
   "version": "0.0.1",
-  "description": "write description here",
+  "description": "Notion video enhancer",
   "main": "",
   "scripts": {
     "start": "webpack serve --config ./config/webpack.dev.js",
@@ -12,18 +12,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourname/your-app.git"
+    "url": "git+https://github.com/forestsheep911/monkey-notion-video-enhancer"
   },
   "keywords": [
     "TamperMonkey",
     "TypeScript"
   ],
-  "author": "you",
+  "author": "bxu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yourname/your-app/issues"
+    "url": "https://github.com/forestsheep911/monkey-notion-video-enhancer/issues"
   },
-  "homepage": "https://github.com/yourname/your-app",
+  "homepage": "https://github.com/forestsheep911/monkey-notion-video-enhancer",
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
@@ -47,5 +47,7 @@
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "plyr": "^3.7.8"
+  }
 }
