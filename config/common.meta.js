@@ -1,4 +1,5 @@
 const pj = require('../package.json')
+const { resolve } = require('path')
 module.exports = {
   name: pj.name,
   namespace: pj.homepage,
@@ -8,8 +9,8 @@ module.exports = {
   copyright: pj.author,
   license: pj.license,
   match: ['https://boccaro.notion.site/*'],
-  require: ['https://cdn.plyr.io/3.7.8/plyr.js'],
-  resource: ['plyrcss https://cdn.plyr.io/3.7.8/plyr.css'],
+  require: [],
+  resource: [],
   'run-at': 'document-end',
   supportURL: pj.bugs.url,
   homepage: pj.homepage,

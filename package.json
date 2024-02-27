@@ -30,6 +30,7 @@
     "@types/tampermonkey": "^4.0.5",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
+    "@types/dplayer": "^1.25.5",
     "babel-loader": "^8.2.4",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
@@ -48,6 +49,7 @@
     "webpack-dev-server": "^4.9.0"
   },
   "dependencies": {
+    "dplayer": "^1.27.1",
     "plyr": "^3.7.8"
   }
 }
