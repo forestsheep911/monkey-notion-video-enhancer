@@ -30,74 +30,37 @@
 /***/ }),
 
 /***/ 752:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-var dplayer_1 = __importDefault(__webpack_require__(953));
+var removeHeightAttributes_1 = __webpack_require__(584);
+var videoEnhancer_1 = __webpack_require__(538);
 var app = function () {
-    // create button
-    var button = document.createElement('button');
-    button.innerText = '采用自研播放器';
-    button.style.marginRight = '2em';
-    button.style.marginTop = '2em';
-    button.style.marginLeft = 'auto';
-    button.style.width = 'fit-content';
-    button.style.userSelect = 'none';
-    button.style.transition = 'background 20ms ease-in 0s';
-    button.style.display = 'inline-flex';
-    button.style.alignItems = 'center';
-    button.style.justifyContent = 'center';
-    button.style.whiteSpace = 'nowrap';
-    button.style.borderRadius = '4px';
-    button.style.border = '1px solid rgba(55, 53, 47, 0.16)';
-    var mains = document.getElementsByTagName('main');
-    function enhanceVideo() {
-        var _a, _b;
-        // check if video exists
-        var videoBlocks = document.querySelectorAll('video');
-        if (videoBlocks.length !== 0) {
-            button.addEventListener('click', function () {
-                videoBlocks.forEach(function (video) {
-                    var _a, _b, _c, _d, _e;
-                    var dpElement = document.createElement('div');
-                    var dp = new dplayer_1.default({
-                        container: dpElement,
-                        video: {
-                            url: video.getAttribute('src') || '',
-                            type: 'auto',
-                        },
-                    });
-                    var parent4 = (_c = (_b = (_a = video.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement) === null || _b === void 0 ? void 0 : _b.parentElement) === null || _c === void 0 ? void 0 : _c.parentElement;
-                    (_d = parent4 === null || parent4 === void 0 ? void 0 : parent4.parentElement) === null || _d === void 0 ? void 0 : _d.insertBefore(dpElement, parent4);
-                    parent4 === null || parent4 === void 0 ? void 0 : parent4.style.setProperty('display', 'none');
-                    (_e = mains[0]) === null || _e === void 0 ? void 0 : _e.removeChild(button);
-                });
-            });
-            // append first child
-            (_a = mains[0]) === null || _a === void 0 ? void 0 : _a.insertBefore(button, mains[0].firstChild);
-        }
-        else {
-            (_b = mains[0]) === null || _b === void 0 ? void 0 : _b.removeChild(button);
-        }
-    }
-    console.log('monkey jumping on the bed.');
+    var executeFunctions = function () {
+        setTimeout(function () {
+            var layoutContent = document.getElementsByTagName('main');
+            console.log('layoutContent1', layoutContent);
+            (0, videoEnhancer_1.enhanceVideo)(layoutContent[0]);
+            (0, removeHeightAttributes_1.removeHeightAttributes)();
+        }, 3000);
+    };
     var oldURL = location.href;
-    setInterval(function () {
-        if (location.href != oldURL) {
-            console.log('URL changed');
-            oldURL = location.href;
-            // begin processing
-            enhanceVideo();
-        }
-    }, 12000); // 每12秒检查一次
-    setTimeout(function () {
-        enhanceVideo();
-    }, 7000);
+    // 监听URL变化
+    var observeUrlChange = function () {
+        var observer = new MutationObserver(function () {
+            if (location.href !== oldURL) {
+                console.log('URL changed');
+                oldURL = location.href;
+                executeFunctions();
+            }
+        });
+        observer.observe(document, { subtree: true, childList: true });
+    };
+    // 初次执行
+    executeFunctions();
+    observeUrlChange();
 };
 exports["default"] = app;
 
@@ -141,6 +104,115 @@ if (true) {
     (0, app_1.default)();
 }
 else {}
+
+
+/***/ }),
+
+/***/ 584:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.removeHeightAttributes = void 0;
+var removeHeightAttributes = function () {
+    setTimeout(function () {
+        var galleryElements = document.querySelectorAll('.notion-gallery-view');
+        galleryElements.forEach(function (gallery) {
+            var elementsWithHeight = gallery.querySelectorAll('[style*="height"]');
+            elementsWithHeight.forEach(function (element) {
+                var style = element.getAttribute('style');
+                if (style) {
+                    var newStyle = style.replace(/height:\s*[0-9.]+px;?/g, '');
+                    element.setAttribute('style', newStyle);
+                }
+            });
+        });
+        console.log('Height attributes removed from elements within .notion-gallery-view');
+    }, 700);
+};
+exports.removeHeightAttributes = removeHeightAttributes;
+
+
+/***/ }),
+
+/***/ 538:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.enhanceVideo = void 0;
+var dplayer_1 = __importDefault(__webpack_require__(953));
+var createEnhanceButton = function () {
+    var button = document.createElement('button');
+    button.innerText = '3秒后将采用自研播放器，点击取消';
+    button.style.margin = '2em auto';
+    button.style.fontSize = '1.5em';
+    button.style.width = 'fit-content';
+    button.style.userSelect = 'none';
+    button.style.transition = 'background 20ms ease-in 0s';
+    button.style.display = 'inline-flex';
+    button.style.alignItems = 'center';
+    button.style.justifyContent = 'center';
+    button.style.whiteSpace = 'nowrap';
+    button.style.borderRadius = '4px';
+    button.style.border = '1px solid rgba(55, 53, 47, 0.16)';
+    return button;
+};
+var enhanceVideo = function (layoutContent) {
+    var _a;
+    if (layoutContent === void 0) { layoutContent = null; }
+    var videoBlocks = document.querySelectorAll('video');
+    if (videoBlocks.length === 0) {
+        return;
+    }
+    console.log('videoBlocks', videoBlocks);
+    var button = createEnhanceButton();
+    var countdown = 3;
+    var updateButtonText = function () {
+        if (countdown > 0) {
+            button.innerText = "".concat(countdown, "\u79D2\u540E\u5C06\u91C7\u7528\u81EA\u7814\u64AD\u653E\u5668\uFF0C\u70B9\u51FB\u53D6\u6D88");
+            countdown -= 1;
+        }
+        else {
+            clearInterval(countdownTimer);
+            button.innerText = '即将采用自研播放器...';
+        }
+    };
+    var countdownTimer = setInterval(updateButtonText, 500);
+    var timer = window.setTimeout(function () {
+        var _a;
+        clearInterval(countdownTimer);
+        videoBlocks.forEach(function (video) {
+            var _a, _b, _c, _d;
+            var dpElement = document.createElement('div');
+            var dp = new dplayer_1.default({
+                container: dpElement,
+                video: {
+                    url: video.getAttribute('src') || '',
+                    type: 'auto',
+                },
+            });
+            var parent4 = (_c = (_b = (_a = video.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement) === null || _b === void 0 ? void 0 : _b.parentElement) === null || _c === void 0 ? void 0 : _c.parentElement;
+            (_d = parent4 === null || parent4 === void 0 ? void 0 : parent4.parentElement) === null || _d === void 0 ? void 0 : _d.insertBefore(dpElement, parent4);
+            parent4 === null || parent4 === void 0 ? void 0 : parent4.style.setProperty('display', 'none');
+        });
+        (_a = layoutContent === null || layoutContent === void 0 ? void 0 : layoutContent.parentElement) === null || _a === void 0 ? void 0 : _a.removeChild(button);
+    }, 3000);
+    button.addEventListener('click', function () {
+        var _a;
+        clearTimeout(timer);
+        clearInterval(countdownTimer);
+        button.innerText = '已取消自动播放';
+        (_a = layoutContent === null || layoutContent === void 0 ? void 0 : layoutContent.parentElement) === null || _a === void 0 ? void 0 : _a.removeChild(button);
+    });
+    (_a = layoutContent === null || layoutContent === void 0 ? void 0 : layoutContent.parentElement) === null || _a === void 0 ? void 0 : _a.insertBefore(button, layoutContent);
+};
+exports.enhanceVideo = enhanceVideo;
 
 
 /***/ })
