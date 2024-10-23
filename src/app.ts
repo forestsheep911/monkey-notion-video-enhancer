@@ -4,9 +4,10 @@ import { enhanceVideo } from './videoEnhancer'
 const app = () => {
   const executeFunctions = () => {
     setTimeout(() => {
-      const layoutContent = document.getElementsByTagName('main')
-      console.log('layoutContent1', layoutContent)
-      enhanceVideo(layoutContent[0] as HTMLElement)
+      const layoutContent = document.getElementsByClassName('notion-page-content')[0]
+      if (layoutContent) {
+        enhanceVideo(layoutContent as HTMLElement)
+      }
       removeHeightAttributes()
     }, 3000)
   }
@@ -17,7 +18,6 @@ const app = () => {
   const observeUrlChange = () => {
     const observer = new MutationObserver(() => {
       if (location.href !== oldURL) {
-        console.log('URL changed')
         oldURL = location.href
         executeFunctions()
       }

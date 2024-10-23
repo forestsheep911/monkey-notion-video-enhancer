@@ -6,4 +6,7 @@ yarn.lock
 myig
 /docs
 /.github
-.git/
+dist/
+.gitignore
+tsconfig.json
+.vscode

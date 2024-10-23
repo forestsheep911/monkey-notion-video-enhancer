@@ -18,7 +18,7 @@ module.exports = () => {
   )
   baseOptions.mode = 'production'
   baseOptions.externals = {
-    plyr: 'Plyr',
+    dplayer: 'DPlayer',
   }
 
   return baseOptions
