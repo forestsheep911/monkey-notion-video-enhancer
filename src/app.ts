@@ -4,10 +4,7 @@ import { enhanceVideo } from './videoEnhancer'
 const app = () => {
   const executeFunctions = () => {
     setTimeout(() => {
-      const layoutContent = document.getElementsByClassName('notion-page-content')[0]
-      if (layoutContent) {
-        enhanceVideo(layoutContent as HTMLElement)
-      }
+      enhanceVideo()
       removeHeightAttributes()
     }, 3000)
   }

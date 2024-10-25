@@ -1,15 +1,13 @@
 // ==UserScript==
-// @name                notion-video-enhancer-friend
-// @namespace           https://github.com/forestsheep911/monkey-notion-video-enhancer-friend
+// @name                wait-and-see-enhancer
+// @namespace           wait-and-see-enhancer
 // @version             0.0.1
 // @description         Notion video enhancer
-// @author              bxu
-// @copyright           bxu
+// @author              kala
+// @copyright           kala
 // @license             MIT
-// @match               https://boccaro.notion.site/f47ef8788acb4e12b604011e95fb1738*
-// @match               https://boccaro.notion.site/25d40a5ff8ad4ac6a0c05b350c0ce90c*
+// @match               https://boccaro.notion.site/*
 // @require             https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js
-
 // @run-at              document-idle
 // @supportURL          https://github.com/forestsheep911/monkey-notion-video-enhancer/issues
 // @homepage            https://github.com/forestsheep911/monkey-notion-video-enhancer
@@ -33,10 +31,7 @@ var videoEnhancer_1 = __webpack_require__(538);
 var app = function () {
     var executeFunctions = function () {
         setTimeout(function () {
-            var layoutContent = document.getElementsByClassName('notion-page-content')[0];
-            if (layoutContent) {
-                (0, videoEnhancer_1.enhanceVideo)(layoutContent);
-            }
+            (0, videoEnhancer_1.enhanceVideo)();
             (0, removeHeightAttributes_1.removeHeightAttributes)();
         }, 3000);
     };
@@ -173,13 +168,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.enhanceVideo = void 0;
 var dplayer_1 = __importDefault(__webpack_require__(971));
-var enhanceVideo = function (layoutContent) {
-    if (layoutContent === void 0) { layoutContent = null; }
+var enhanceVideo = function () {
     var videoBlocks = document.querySelectorAll('video');
     if (videoBlocks.length === 0) {
         return;
     }
-    console.log('videoBlocks', videoBlocks);
     setTimeout(function () {
         videoBlocks.forEach(function (video) {
             var _a, _b, _c, _d;

@@ -1,12 +1,10 @@
 import DPlayer from 'dplayer'
 
-export const enhanceVideo = (layoutContent: HTMLElement | null = null) => {
+export const enhanceVideo = () => {
   const videoBlocks = document.querySelectorAll('video')
   if (videoBlocks.length === 0) {
     return
   }
-
-  console.log('videoBlocks', videoBlocks)
 
   setTimeout(() => {
     videoBlocks.forEach((video) => {

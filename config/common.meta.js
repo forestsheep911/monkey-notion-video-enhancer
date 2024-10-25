@@ -7,10 +7,7 @@ module.exports = {
   author: pj.author,
   copyright: pj.author,
   license: pj.license,
-  match: [
-    'https://boccaro.notion.site/f47ef8788acb4e12b604011e95fb1738*',
-    'https://boccaro.notion.site/25d40a5ff8ad4ac6a0c05b350c0ce90c*',
-  ],
+  match: ['https://boccaro.notion.site/*'],
   require: ['https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js'],
   resource: [],
   'run-at': 'document-idle',
