@@ -1,12 +1,9 @@
 import DPlayer from 'dplayer'
 
 export const enhanceVideo = () => {
-  const videoBlocks = document.querySelectorAll('video')
-  if (videoBlocks.length === 0) {
-    return
-  }
+  let isPlayerChanged = false
 
-  setTimeout(() => {
+  function changerPlayer(videoBlocks: NodeListOf<HTMLVideoElement>) {
     videoBlocks.forEach((video) => {
       const dpElement = document.createElement('div')
       new DPlayer({
@@ -20,5 +17,20 @@ export const enhanceVideo = () => {
       parent4?.parentElement?.insertBefore(dpElement, parent4)
       parent4?.style.setProperty('display', 'none')
     })
-  }, 3000)
+    isPlayerChanged = true
+  }
+
+  const checkAndChangePlayer = () => {
+    const videoBlocks = document.querySelectorAll('video')
+    if (videoBlocks.length === 0 || isPlayerChanged) {
+      return
+    }
+    changerPlayer(videoBlocks)
+  }
+
+  // 初次3秒后检查
+  setTimeout(checkAndChangePlayer, 3000)
+
+  // 30秒后再次检查
+  setTimeout(checkAndChangePlayer, 30000)
 }

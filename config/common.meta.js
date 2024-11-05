@@ -1,7 +1,7 @@
 const pj = require('../package.json')
 module.exports = {
-  name: `${pj.name}-friend`,
-  namespace: `${pj.homepage}-friend`,
+  name: `waitandesee`,
+  namespace: `waitandesee-post-video-enhancer`,
   version: pj.version,
   description: pj.description,
   author: pj.author,
