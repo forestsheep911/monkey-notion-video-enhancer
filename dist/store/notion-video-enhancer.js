@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name                notion-video-enhancer-friend
-// @namespace           https://github.com/forestsheep911/monkey-notion-video-enhancer-friend
+// @name                waitandesee
+// @namespace           waitandesee-post-video-enhancer
 // @version             0.0.1
 // @description         Notion video enhancer
 // @author              bxu
@@ -170,11 +170,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.enhanceVideo = void 0;
 var dplayer_1 = __importDefault(__webpack_require__(971));
 var enhanceVideo = function () {
-    var videoBlocks = document.querySelectorAll('video');
-    if (videoBlocks.length === 0) {
-        return;
-    }
-    setTimeout(function () {
+    var isPlayerChanged = false;
+    function changerPlayer(videoBlocks) {
         videoBlocks.forEach(function (video) {
             var _a, _b, _c, _d;
             var dpElement = document.createElement('div');
@@ -189,7 +186,19 @@ var enhanceVideo = function () {
             (_d = parent4 === null || parent4 === void 0 ? void 0 : parent4.parentElement) === null || _d === void 0 ? void 0 : _d.insertBefore(dpElement, parent4);
             parent4 === null || parent4 === void 0 ? void 0 : parent4.style.setProperty('display', 'none');
         });
-    }, 3000);
+        isPlayerChanged = true;
+    }
+    var checkAndChangePlayer = function () {
+        var videoBlocks = document.querySelectorAll('video');
+        if (videoBlocks.length === 0 || isPlayerChanged) {
+            return;
+        }
+        changerPlayer(videoBlocks);
+    };
+    // 初次3秒后检查
+    setTimeout(checkAndChangePlayer, 3000);
+    // 30秒后再次检查
+    setTimeout(checkAndChangePlayer, 30000);
 };
 exports.enhanceVideo = enhanceVideo;
 
