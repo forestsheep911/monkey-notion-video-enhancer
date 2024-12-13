@@ -13,10 +13,12 @@ export const enhanceVideo = () => {
           type: 'auto',
         },
       })
-      // 直接在原video前插入新播放器
-      video.parentElement?.insertBefore(dpElement, video)
-      // 只隐藏原始video标签
-      video.style.display = 'none'
+      const parent4 = video.parentElement?.parentElement?.parentElement?.parentElement
+      console.log('parent4', parent4)
+      console.log('dpElement', dpElement)
+
+      // parent4?.parentElement?.insertBefore(dpElement, parent4)
+      // parent4?.style.setProperty('display', 'none')
     })
     isPlayerChanged = true
   }

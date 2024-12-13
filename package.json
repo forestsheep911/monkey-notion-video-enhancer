@@ -1,6 +1,6 @@
 {
-  "name": "notion-video-enhancer",
-  "version": "0.0.1",
+  "name": "waitandesee-furnish",
+  "version": "1.0.0",
   "description": "Notion video enhancer",
   "main": "",
   "scripts": {
@@ -15,10 +15,12 @@
     "url": "git+https://github.com/forestsheep911/monkey-notion-video-enhancer"
   },
   "keywords": [
-    "TamperMonkey",
-    "TypeScript"
+    "Movie",
+    "Notion",
+    "tampermonkey",
+    "video player"
   ],
-  "author": "bxu",
+  "author": "boccaro",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/forestsheep911/monkey-notion-video-enhancer/issues"

@@ -1,13 +1,14 @@
 // ==UserScript==
-// @name                wait-and-see-enhancer
-// @namespace           wait-and-see-enhancer
-// @version             0.0.1
+// @name                waitandesee-furnish
+// @namespace           waitandesee-furnish-5923078164
+// @version             1.0.0
 // @description         Notion video enhancer
-// @author              kala
-// @copyright           kala
+// @author              boccaro
+// @copyright           boccaro
 // @license             MIT
 // @match               https://boccaro.notion.site/*
-// @require             https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js
+// @require             https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js
+
 // @run-at              document-idle
 // @supportURL          https://github.com/forestsheep911/monkey-notion-video-enhancer/issues
 // @homepage            https://github.com/forestsheep911/monkey-notion-video-enhancer
@@ -169,13 +170,10 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.enhanceVideo = void 0;
 var dplayer_1 = __importDefault(__webpack_require__(971));
 var enhanceVideo = function () {
-    var videoBlocks = document.querySelectorAll('video');
-    if (videoBlocks.length === 0) {
-        return;
-    }
-    setTimeout(function () {
+    var isPlayerChanged = false;
+    function changerPlayer(videoBlocks) {
         videoBlocks.forEach(function (video) {
-            var _a, _b, _c, _d;
+            var _a;
             var dpElement = document.createElement('div');
             new dplayer_1.default({
                 container: dpElement,
@@ -184,11 +182,24 @@ var enhanceVideo = function () {
                     type: 'auto',
                 },
             });
-            var parent4 = (_c = (_b = (_a = video.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement) === null || _b === void 0 ? void 0 : _b.parentElement) === null || _c === void 0 ? void 0 : _c.parentElement;
-            (_d = parent4 === null || parent4 === void 0 ? void 0 : parent4.parentElement) === null || _d === void 0 ? void 0 : _d.insertBefore(dpElement, parent4);
-            parent4 === null || parent4 === void 0 ? void 0 : parent4.style.setProperty('display', 'none');
+            // 直接在原video前插入新播放器
+            (_a = video.parentElement) === null || _a === void 0 ? void 0 : _a.insertBefore(dpElement, video);
+            // 只隐藏原始video标签
+            video.style.display = 'none';
         });
-    }, 3000);
+        isPlayerChanged = true;
+    }
+    var checkAndChangePlayer = function () {
+        var videoBlocks = document.querySelectorAll('video');
+        if (videoBlocks.length === 0 || isPlayerChanged) {
+            return;
+        }
+        changerPlayer(videoBlocks);
+    };
+    // 初次3秒后检查
+    setTimeout(checkAndChangePlayer, 3000);
+    // 30秒后再次检查
+    setTimeout(checkAndChangePlayer, 30000);
 };
 exports.enhanceVideo = enhanceVideo;
 

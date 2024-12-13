@@ -1,14 +1,14 @@
 const pj = require('../package.json')
 module.exports = {
-  name: `waitandesee`,
-  namespace: `waitandesee-post-video-enhancer`,
+  name: pj.name,
+  namespace: `${pj.name}-5923078164`,
   version: pj.version,
   description: pj.description,
   author: pj.author,
   copyright: pj.author,
   license: pj.license,
   match: ['https://boccaro.notion.site/*'],
-  require: ['https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js'],
+  require: ['https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js'],
   resource: [],
   'run-at': 'document-idle',
   supportURL: pj.bugs.url,

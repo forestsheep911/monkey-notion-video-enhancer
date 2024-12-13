@@ -26,6 +26,7 @@ export const removeHeightAttributes = () => {
     }
 
     // 初始处理
+    console.log('Removing height attributes for elements within the parent element')
     removeHeight(parentElement)
 
     // 使用 MutationObserver 监视新元素的添加
