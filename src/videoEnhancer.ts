@@ -13,12 +13,10 @@ export const enhanceVideo = () => {
           type: 'auto',
         },
       })
-      const parent4 = video.parentElement?.parentElement?.parentElement?.parentElement
-      console.log('parent4', parent4)
-      console.log('dpElement', dpElement)
-
-      // parent4?.parentElement?.insertBefore(dpElement, parent4)
-      // parent4?.style.setProperty('display', 'none')
+      // 直接在原video前插入新播放器
+      video.parentElement?.insertBefore(dpElement, video)
+      // 只隐藏原始video标签
+      video.style.display = 'none'
     })
     isPlayerChanged = true
   }
@@ -31,9 +29,9 @@ export const enhanceVideo = () => {
     changerPlayer(videoBlocks)
   }
 
-  // 初次3秒后检查
-  setTimeout(checkAndChangePlayer, 3000)
-
-  // 30秒后再次检查
-  setTimeout(checkAndChangePlayer, 30000)
+  // set check timing
+  const checkIntervalTiming = [3000, 10000, 20000, 30000]
+  checkIntervalTiming.forEach((timing) => {
+    setTimeout(checkAndChangePlayer, timing)
+  })
 }

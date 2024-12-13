@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                waitandesee-furnish
 // @namespace           waitandesee-furnish-5923078164
-// @version             1.0.0
+// @version             1.0.1
 // @description         Notion video enhancer
 // @author              boccaro
 // @copyright           boccaro
@@ -127,6 +127,7 @@ var removeHeightAttributes = function () {
             });
         };
         // 初始处理
+        console.log('Removing height attributes for elements within the parent element');
         removeHeight(parentElement);
         // 使用 MutationObserver 监视新元素的添加
         var observer = new MutationObserver(function (mutations) {
@@ -196,10 +197,11 @@ var enhanceVideo = function () {
         }
         changerPlayer(videoBlocks);
     };
-    // 初次3秒后检查
-    setTimeout(checkAndChangePlayer, 3000);
-    // 30秒后再次检查
-    setTimeout(checkAndChangePlayer, 30000);
+    // set check timing
+    var checkIntervalTiming = [3000, 10000, 20000, 30000];
+    checkIntervalTiming.forEach(function (timing) {
+        setTimeout(checkAndChangePlayer, timing);
+    });
 };
 exports.enhanceVideo = enhanceVideo;
 
