@@ -127,6 +127,7 @@ var removeHeightAttributes = function () {
             });
         };
         // 初始处理
+        console.log('Removing height attributes for elements within the parent element');
         removeHeight(parentElement);
         // 使用 MutationObserver 监视新元素的添加
         var observer = new MutationObserver(function (mutations) {
@@ -173,7 +174,7 @@ var enhanceVideo = function () {
     var isPlayerChanged = false;
     function changerPlayer(videoBlocks) {
         videoBlocks.forEach(function (video) {
-            var _a;
+            var _a, _b, _c;
             var dpElement = document.createElement('div');
             new dplayer_1.default({
                 container: dpElement,
@@ -182,10 +183,11 @@ var enhanceVideo = function () {
                     type: 'auto',
                 },
             });
-            // 直接在原video前插入新播放器
-            (_a = video.parentElement) === null || _a === void 0 ? void 0 : _a.insertBefore(dpElement, video);
-            // 只隐藏原始video标签
-            video.style.display = 'none';
+            var parent4 = (_c = (_b = (_a = video.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement) === null || _b === void 0 ? void 0 : _b.parentElement) === null || _c === void 0 ? void 0 : _c.parentElement;
+            console.log('parent4', parent4);
+            console.log('dpElement', dpElement);
+            // parent4?.parentElement?.insertBefore(dpElement, parent4)
+            // parent4?.style.setProperty('display', 'none')
         });
         isPlayerChanged = true;
     }
