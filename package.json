@@ -1,7 +1,7 @@
 {
-  "name": "waitandesee-furnish",
-  "version": "1.0.1",
-  "description": "Notion video enhancer",
+  "name": "wapaw-enhancer",
+  "version": "1.0.2",
+  "description": "观影网站加强体验",
   "main": "",
   "scripts": {
     "start": "webpack serve --config ./config/webpack.dev.js",

@@ -2,9 +2,13 @@ import { removeHeightAttributes } from './removeHeightAttributes'
 import { enhanceVideo } from './videoEnhancer'
 
 const app = () => {
+  // 立即执行手动视频增强功能
+  enhanceVideo()
+
   const executeFunctions = () => {
+    // 只对自动触发的功能使用延迟
     setTimeout(() => {
-      enhanceVideo()
+      // 这里可以只保留需要等待DOM加载的功能
       removeHeightAttributes()
     }, 3000)
   }
@@ -17,15 +21,16 @@ const app = () => {
       if (location.href !== oldURL) {
         oldURL = location.href
         executeFunctions()
+        // URL变化时也需要重新初始化视频增强功能
+        // enhanceVideo()
       }
     })
 
     observer.observe(document, { subtree: true, childList: true })
   }
 
-  // 初次执行
+  // 初始执行
   executeFunctions()
   observeUrlChange()
 }
-
 export default app

@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name                观影网站加强体验
-// @namespace           waitandesee-furnish-5923078164
+// @name                wapaw-enhancer
+// @namespace           wapaw-enhancer-5923078164
 // @version             1.0.2
-// @description         Notion video enhancer
+// @description         观影网站加强体验
 // @author              boccaro
 // @copyright           boccaro
 // @license             MIT
