@@ -173,7 +173,7 @@ var enhanceVideo = function () {
     var isPlayerChanged = false;
     function changerPlayer(videoBlocks) {
         videoBlocks.forEach(function (video) {
-            var _a, _b, _c, _d;
+            var _a;
             var dpElement = document.createElement('div');
             new dplayer_1.default({
                 container: dpElement,
@@ -182,9 +182,10 @@ var enhanceVideo = function () {
                     type: 'auto',
                 },
             });
-            var parent4 = (_c = (_b = (_a = video.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement) === null || _b === void 0 ? void 0 : _b.parentElement) === null || _c === void 0 ? void 0 : _c.parentElement;
-            (_d = parent4 === null || parent4 === void 0 ? void 0 : parent4.parentElement) === null || _d === void 0 ? void 0 : _d.insertBefore(dpElement, parent4);
-            parent4 === null || parent4 === void 0 ? void 0 : parent4.style.setProperty('display', 'none');
+            // 直接在原video前插入新播放器
+            (_a = video.parentElement) === null || _a === void 0 ? void 0 : _a.insertBefore(dpElement, video);
+            // 只隐藏原始video标签
+            video.style.display = 'none';
         });
         isPlayerChanged = true;
     }
