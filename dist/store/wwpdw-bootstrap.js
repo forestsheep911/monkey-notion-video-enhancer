@@ -314,8 +314,9 @@ var dplayer_1 = __importDefault(__webpack_require__(971));
 var enhanceVideo = function () {
     var replaceVideoPlayer = function () {
         var _a, _b, _c;
-        var video = document.querySelector('video');
+        var video = document.querySelector('video:not(.dplayer-video):not([data-enhanced])');
         if (!video || video.getAttribute('data-enhanced')) {
+            console.log('No video element found or already enhanced');
             return;
         }
         // 向上查找4层父元素，并转换类型
