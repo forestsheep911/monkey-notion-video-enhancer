@@ -23,6 +23,7 @@ fs.writeFile(path.join(outputPath, monkeyHeader), getBanner(devBanner), () => {}
 module.exports = () => {
   baseOptions.output.path = outputPath
   baseOptions.output.filename = `${devBanner.name}.script.js`
+
   baseOptions.plugins.push(
     new webpack.BannerPlugin({
       banner: getBanner(devBanner),
@@ -38,6 +39,7 @@ module.exports = () => {
       inject: 'body',
     }),
   )
+
   baseOptions.devServer = {
     static: [
       {
@@ -53,7 +55,11 @@ module.exports = () => {
     open: true,
     liveReload: true,
     watchFiles: ['src/**/*', 'public/**/*'],
+    devMiddleware: {
+      writeToDisk: true,
+    },
   }
+
   baseOptions.mode = 'development'
 
   return baseOptions

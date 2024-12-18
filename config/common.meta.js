@@ -1,13 +1,13 @@
 const pj = require('../package.json')
 module.exports = {
-  name: pj.name,
-  namespace: `${pj.name}`,
+  name: '观影体验提升计划',
+  namespace: '25d40a5ff8ad4ac6a0c05b350c0ce90c',
   version: pj.version,
   description: pj.description,
   author: pj.author,
   copyright: pj.author,
   license: pj.license,
-  match: ['https://boccaro.notion.site/*'],
+  match: ['https://wwpdw.notion.site/*'],
   require: ['https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js'],
   resource: [],
   'run-at': 'document-idle',

@@ -1,15 +1,11 @@
 {
-  "name": "wwpdw-bootstrap",
-  "version": "1.0.3",
-  "description": "观影网站加强体验",
+  "name": "wwpdw",
+  "version": "1.0.0",
+  "description": "wwwpdw观影体验之史诗级提升",
   "main": "",
   "scripts": {
-    "start": "webpack serve --config ./config/webpack.dev.js",
-    "dev": "webpack --watch --config ./config/webpack.dev.js",
-    "build": "yarn lint:fix && webpack --config ./config/webpack.prod.js --env filename=app.user.js",
-    "go": "yarn start && yarn dev",
-    "lint": "eslint --ext .ts --ext .tsx src/",
-    "lint:fix": "yarn lint --fix"
+    "start": "cross-env NODE_ENV=development webpack serve --config ./config/webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -30,11 +26,14 @@
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.26.0",
     "@types/dplayer": "^1.25.5",
     "@types/tampermonkey": "^4.0.5",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
     "babel-loader": "^8.2.4",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "cross-env": "^7.0.3",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-html": "^6.2.0",
@@ -52,6 +51,7 @@
     "webpack-dev-server": "^4.9.0"
   },
   "dependencies": {
+    "core-js": "3",
     "dplayer": "^1.27.1"
   }
 }

@@ -1,14 +1,15 @@
 import app from './app'
+
 async function initDevelopment() {
   try {
-    const { isTampermonkey } = await import('@/lib/environment')
+    const { isTampermonkey } = await import(/* webpackMode: "eager" */ '@/lib/environment')
 
     if (isTampermonkey()) {
-      const { hotReload } = await import('@/lib/hotReload')
+      const { hotReload } = await import(/* webpackMode: "eager" */ '@/lib/hotReload')
       hotReload()
       app()
     } else {
-      const { autoInstall } = await import('@/mock/autoInstall')
+      const { autoInstall } = await import(/* webpackMode: "eager" */ '@/mock/autoInstall')
       autoInstall()
     }
   } catch (err) {

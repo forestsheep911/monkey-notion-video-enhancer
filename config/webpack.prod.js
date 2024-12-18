@@ -1,10 +1,10 @@
 const { resolve } = require('path')
 const webpack = require('webpack')
-const devBanner = require('./dev.meta.js')
+const commonBanner = require('./common.meta.js')
 const { baseOptions, getBanner } = require('./webpack.config.base')
 
 module.exports = () => {
-  baseOptions.output.filename = `${devBanner.name}.js`
+  baseOptions.output.filename = `${commonBanner.name}.js`
   baseOptions.output.path = resolve(__dirname, '../dist/store')
   baseOptions.plugins.push(
     new webpack.BannerPlugin({
@@ -19,6 +19,11 @@ module.exports = () => {
   baseOptions.mode = 'production'
   baseOptions.externals = {
     dplayer: 'DPlayer',
+  }
+
+  // 不启用代码压缩
+  baseOptions.optimization = {
+    minimize: false,
   }
 
   return baseOptions
