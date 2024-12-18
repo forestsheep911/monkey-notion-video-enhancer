@@ -1,12 +1,13 @@
 LICENSE
-.prettierignore
 readme.md
 yarn.lock
+.prettierignore
 .eslintignore
+.gitignore
+.vscode
+.prettierrc.js
 myig
+tsconfig.json
 /docs
 /.github
 dist/
-.gitignore
-tsconfig.json
-.vscode

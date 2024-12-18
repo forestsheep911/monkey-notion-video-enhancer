@@ -1,12 +1,13 @@
 {
-  "name": "wapaw-enhancer",
-  "version": "1.0.2",
+  "name": "wwpdw-bootstrap",
+  "version": "1.0.3",
   "description": "观影网站加强体验",
   "main": "",
   "scripts": {
     "start": "webpack serve --config ./config/webpack.dev.js",
     "dev": "webpack --watch --config ./config/webpack.dev.js",
     "build": "yarn lint:fix && webpack --config ./config/webpack.prod.js --env filename=app.user.js",
+    "go": "yarn start && yarn dev",
     "lint": "eslint --ext .ts --ext .tsx src/",
     "lint:fix": "yarn lint --fix"
   },

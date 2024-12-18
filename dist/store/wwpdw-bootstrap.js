@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name                wapaw-enhancer
-// @namespace           wapaw-enhancer-5923078164
-// @version             1.0.2
+// @name                wwpdw-bootstrap
+// @namespace           wwpdw-bootstrap
+// @version             1.0.3
 // @description         观影网站加强体验
 // @author              boccaro
 // @copyright           boccaro
@@ -14,6 +14,7 @@
 // @homepage            https://github.com/forestsheep911/monkey-notion-video-enhancer
 // @grant               GM_getResourceText
 // @grant               GM_addStyle
+// @grant               GM_registerMenuCommand
 // @icon                https://img.icons8.com/external-vitaliy-gorbachev-blue-vitaly-gorbachev/60/external-player-stay-home-vitaliy-gorbachev-blue-vitaly-gorbachev.png
 // ==/UserScript==
 /* eslint-disable */ /* spell-checker: disable */
@@ -346,6 +347,7 @@ var enhanceVideo = function () {
             replaceVideoPlayer();
         }
     });
+    GM_registerMenuCommand('使用 DPlayer 播放', replaceVideoPlayer);
 };
 exports.enhanceVideo = enhanceVideo;
 
